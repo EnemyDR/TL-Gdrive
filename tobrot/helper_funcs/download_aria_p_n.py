@@ -5,7 +5,7 @@
 # the logging things
 import logging
 import sys
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10000)
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -56,6 +56,8 @@ async def aria_start():
     aria2_daemon_start_cmd.append("--max-overall-upload-limit=1K")
     aria2_daemon_start_cmd.append("--split=10")
     aria2_daemon_start_cmd.append(f"--bt-stop-timeout={MAX_TIME_TO_WAIT_FOR_TORRENTS_TO_START}")
+    aria2_daemon_start_cmd.append("--peer-id-prefix=-UT221W-")
+    aria2_daemon_start_cmd.append("--user-agent=uTorrent/2210")
     #
     LOGGER.info(aria2_daemon_start_cmd)
     #
